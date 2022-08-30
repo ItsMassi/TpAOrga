@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1661357100 source:c:\users\massi\documents\projects\pojectscodeblocks\tpa ejercicios\cronometro.c
+	<stdio.h>
+
+1661544073 source:c:\users\massi\documents\projects\pojectscodeblocks\tpa ejercicios\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
