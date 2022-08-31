@@ -156,20 +156,51 @@ int contarDigitosParesSource(int numero, int contador, int pares){
 
 
 //ejercicio 9
-int cambioDiezToHex(char str[]){//el array debe tener un tamaño maximo de 16
-    int i = 15;
-    int cantVacio = 0;
-     while(str[i]<48 || str[i]>122){
-        cantVacio++;
-        printf("analizando: %c | ",str[i]);
-        printf("numero ascii: %d \n",str[i]);
-        i--;
-        if(i<0){break;}
-     }
-    cantVacio++; //el enter
-     printf("hay %d espacios vacios", cantVacio);
-     printf("hay %d caracteres", 16-cantVacio);
+int cambioDiezToHex(char str[]){//el array debe tener un tamaño maximo de 16 y las letras deben ser mayusculas
+    int asciiChar = 0;
+    int aux = 0;
+    int suma = 0;
+    int coeficiente = 0;
+    for(int i = 15; i>=0; i--){                                                      //recorremos de atras para adelante
+        asciiChar = str[i];                                                         //valor en ascii de cada char del array
+        if(asciiChar != 0 && asciiChar != 16){                                      //si la celda no esta vacia
+            if(isdigit(str[i])){                                                    //libreria estandar de C no es necesaria la importacion
+                aux = str[i] - '0';                                                 //sacamos el valor del digito como integer
+                suma += aux * pow(16,coeficiente);
+                coeficiente++;                                                      //cada vez que sumamos aumentamos el coeficiente para manter el formato
+            }else{
+                switch(asciiChar - '@'){//esto para que comience en 1
+                    case 1 ://valor de A
+                        suma += 10 * pow(16,coeficiente);
+                        coeficiente++;
+                        break;
+                    case 2 ://valor de B
+                        suma += 11 * pow(16,coeficiente);
+                        coeficiente++;
+                        break;
+                    case 3 ://valor de C
+                        suma += 12 * pow(16,coeficiente);
+                        coeficiente++;
+                        break;
+                    case 4 ://valor de D
+                        suma += 13 * pow(16,coeficiente);
+                        coeficiente++;
+                        break;
+                    case 5 ://valor de E
+                        suma += 14 * pow(16,coeficiente);
+                        coeficiente++;
+                        break;
+                    case 6 ://valor de F
+                        suma += 15 * pow(16,coeficiente);
+                        coeficiente++;
+                        break;
+                }
+            }
+        }
+        printf("El valor en decimal es: %d \n", suma);
+    }
 
+    printf("El valor en decimal es: %d", suma);
      return 0;
 }
 int main(){
